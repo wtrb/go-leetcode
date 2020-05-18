@@ -1,54 +1,56 @@
 package strings
 
+// Time complexity: O(N)
+// Space complexity: O(1)
 func findAnagrams(s string, p string) []int {
-	if len(s) < len(p) {
+	result := []int{}
+	sLen := len(s)
+	pLen := len(p)
+
+	if sLen < pLen {
 		return []int{}
 	}
 
-	result := []int{}
-
-	chars := [26]int{}
+	pMap := [26]int{}
 	for _, ch := range p {
-		chars[ch-'a']++
+		pMap[ch-'a']++
 	}
 
-	start := 0
-	end := 0
-	count := len(p)
-	for end < len(s) {
-		//move right everytime, if the character exists in p's hash, decrease the count
-		//current hash value >= 1 means the character is existing in p
-		if chars[s[end]-'a'] >= 1 {
-			count--
-		}
-		chars[s[end]-'a']--
-		end++
+	sMap := [26]int{}
+	for i := 0; i < pLen; i++ {
+		sMap[s[i]-'a']++
+	}
 
-		//when the count is down to 0, means we found the right anagram
-		//then add window's left to result list
-		if count == 0 {
-			result = append(result, start)
-		}
+	if isAnagram(sMap, pMap) {
+		result = append(result, 0)
+	}
 
-		//if we find the window's size equals to p, then we have to move left (narrow the window) to find the new match window
-		//++ to reset the hash because we kicked out the left
-		//only increase the count if the character is in p
-		//the count >= 0 indicate it was original in the hash, cuz it won't go below 0
-		if (end - start) == len(p) {
-			if chars[s[start]-'a'] >= 0 {
-				count++
-			}
-			chars[s[start]-'a']++
-			start++
+	for i := pLen; i < sLen; i++ {
+		sMap[s[i]-'a']++
+		sMap[s[i-pLen]-'a']--
+
+		if isAnagram(sMap, pMap) {
+			result = append(result, i-pLen+1)
 		}
 	}
 
 	return result
 }
 
+func isAnagram(sMap, pMap [26]int) bool {
+	for i := range pMap {
+		if sMap[i] != pMap[i] {
+			return false
+		}
+	}
+	return true
+}
+
 // Find All Anagrams in a String
 
 // https://leetcode.com/problems/find-all-anagrams-in-a-string/
-// https://leetcode.com/submissions/detail/340642478/?from=/explore/featured/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3332/
+// https://leetcode.com/submissions/detail/341030680/?from=/explore/featured/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3332/
 
-// tags:
+// https://www.youtube.com/watch?v=PinhuDr_Q9c
+
+// tags: map, hash map, anagram
