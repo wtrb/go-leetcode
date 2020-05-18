@@ -21,7 +21,7 @@ func findAnagrams(s string, p string) []int {
 		sMap[s[i]-'a']++
 	}
 
-	if isAnagram(sMap, pMap) {
+	if matches(sMap, pMap) {
 		result = append(result, 0)
 	}
 
@@ -29,7 +29,7 @@ func findAnagrams(s string, p string) []int {
 		sMap[s[i]-'a']++
 		sMap[s[i-pLen]-'a']--
 
-		if isAnagram(sMap, pMap) {
+		if matches(sMap, pMap) {
 			result = append(result, i-pLen+1)
 		}
 	}
@@ -37,7 +37,7 @@ func findAnagrams(s string, p string) []int {
 	return result
 }
 
-func isAnagram(sMap, pMap [26]int) bool {
+func matches(sMap, pMap [26]int) bool {
 	for i := range pMap {
 		if sMap[i] != pMap[i] {
 			return false
@@ -53,4 +53,4 @@ func isAnagram(sMap, pMap [26]int) bool {
 
 // https://www.youtube.com/watch?v=PinhuDr_Q9c
 
-// tags: map, hash map, anagram
+// tags: map, hash map, anagram, permutation
