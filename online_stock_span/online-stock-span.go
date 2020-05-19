@@ -13,6 +13,8 @@ func Constructor() StockSpanner {
 	return StockSpanner{}
 }
 
+// Time complexity: O(N) with N is the number of Next calls
+// Space complexity: O(N)
 func (this *StockSpanner) Next(price int) int {
 	w := 1
 
