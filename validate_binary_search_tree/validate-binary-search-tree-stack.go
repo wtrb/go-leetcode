@@ -1,11 +1,12 @@
-package bst
+package tree
 
 // Time complexity: O(N).
 // Space complexity: O(N) to keep stack.
-func kthSmallest(root *TreeNode, k int) int {
+func isValidBSTStack(root *TreeNode) bool {
 	stack := []*TreeNode{}
+	lastLeftVal := -1 << 63
 
-	for {
+	for len(stack) > 0 || root != nil {
 		for root != nil {
 			stack = append(stack, root)
 			root = root.Left
@@ -13,19 +14,19 @@ func kthSmallest(root *TreeNode, k int) int {
 
 		root = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-
-		k--
-		if k == 0 {
-			return root.Val
+		if root.Val <= lastLeftVal {
+			return false
 		}
+		lastLeftVal = root.Val
 
 		root = root.Right
 	}
 
+	return true
 }
 
-// Kth Smallest Element in a BST
+// Validate Binary Search Tree
 
-// https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+// https://leetcode.com/problems/validate-binary-search-tree/
 
 // tags: bst, binary search tree, tree, stack
