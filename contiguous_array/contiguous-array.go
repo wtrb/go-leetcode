@@ -41,6 +41,10 @@ func maxInts(a, b int) int {
 In this approach, we make use of a count variable, which is used to store the relative number of ones and zeros encountered so far while traversing the array. The count variable is incremented by one for every 1 encountered and the same is decremented by one for every 0 encountered.
 
 We start traversing the array from the beginning. If at any moment, the count becomes zero, it implies that we've encountered equal number of zeros and ones from the beginning till the current index of the array(ii). Not only this, another point to be noted is that if we encounter the same count twice while traversing the array, it means that the number of zeros and ones are equal between the indices corresponding to the equal count values. The following figure illustrates the observation for the sequence [0 0 1 0 0 0 1 1]:
+
+Index:	0	1	2	3	4	5	6	7
+Array:	[0	0	1	0	0	0	1	1]
+Count:	-1	-2	-1	-2	-3	-4	-3	-2
 */
 
 // https://leetcode.com/submissions/detail/345213591/?from=/explore/featured/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3341/
