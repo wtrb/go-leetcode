@@ -24,7 +24,6 @@ func fill(image [][]int, sr, sc int, oldColor, newColor int) {
 }
 
 // Flood Fill
-
 // https://leetcode.com/problems/flood-fill/
 // https://leetcode.com/problems/number-of-islands/
 
@@ -34,3 +33,5 @@ func fill(image [][]int, sr, sc int, oldColor, newColor int) {
 // https://www.youtube.com/watch?v=_X7hJuczpCs
 // https://www.youtube.com/watch?v=o8S2bO3pmO4
 // https://www.youtube.com/watch?v=TClRuEZ-uDg
+
+// tags: dfs
