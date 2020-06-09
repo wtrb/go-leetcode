@@ -51,4 +51,4 @@ func findAnagrams2(s string, p string) []int {
 // https://leetcode.com/problems/find-all-anagrams-in-a-string/
 // https://leetcode.com/submissions/detail/340642478/?from=/explore/featured/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3332/
 
-// tags: map, hash map, anagram, permutation
+// tags: map, hash map, anagram, permutation, kmp, sliding window

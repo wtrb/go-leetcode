@@ -53,4 +53,4 @@ func matches(sMap, pMap [26]int) bool {
 
 // https://www.youtube.com/watch?v=PinhuDr_Q9c
 
-// tags: map, hash map, anagram, permutation
+// tags: map, hash map, anagram, permutation, kmp, sliding window
