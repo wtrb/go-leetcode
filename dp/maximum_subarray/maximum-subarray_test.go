@@ -1,4 +1,4 @@
-package maximum_subarray_53
+package maxsub
 
 import "testing"
 
@@ -57,7 +57,7 @@ func Test_maxSubArray(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := maxSubArray(tt.args.nums); got != tt.want {
-				t.Errorf("maxSubArray() = %v, want %v", got, tt.want)
+				t.Errorf("maxSubArray(%+v) = %v, want %v", tt.args.nums, got, tt.want)
 			}
 		})
 	}

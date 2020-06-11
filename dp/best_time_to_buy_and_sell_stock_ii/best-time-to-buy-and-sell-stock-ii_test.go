@@ -1,4 +1,4 @@
-package best_time_to_buy_and_sell_stock_ii
+package stock
 
 import "testing"
 
@@ -11,13 +11,6 @@ func Test_maxProfit(t *testing.T) {
 		args args
 		want int
 	}{
-		{
-			name: "",
-			args: args{
-				prices: []int{},
-			},
-			want: 0,
-		},
 		{
 			name: "",
 			args: args{
