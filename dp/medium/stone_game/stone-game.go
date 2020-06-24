@@ -27,11 +27,11 @@ func loop(piles []int) bool {
 		tail := piles[len(piles)-1]
 
 		if head > tail {
-			alex += piles[0]
+			alex += head
 			lee += tail
 		} else {
 			alex += tail
-			lee += piles[0]
+			lee += head
 		}
 		piles = piles[1 : len(piles)-1]
 	}
@@ -89,7 +89,10 @@ func dypr(piles []int) bool {
 
 	for i := 0; i < len(piles); i++ {
 		for j := i + 1; j < len(piles); j++ {
-			dp[i][j] = maxInts(piles[i]-dp[i+1][j], piles[j]-dp[i][j-1])
+			dp[i][j] = maxInts(
+				piles[i]-dp[i+1][j],
+				piles[j]-dp[i][j-1],
+			)
 		}
 	}
 
@@ -105,5 +108,6 @@ func maxInts(a, b int) int {
 
 // Stone Game
 // https://leetcode.com/problems/stone-game/
+// Similar to https://leetcode.com/problems/predict-the-winner/
 
 // tags: dp, dynamic programming, math, recursion, memoize
